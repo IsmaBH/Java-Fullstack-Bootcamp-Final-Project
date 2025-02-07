@@ -11,7 +11,7 @@ public class Producto {
     @Column(name = "productosID", unique = true, nullable = false)
     private Long id;
 
-    @Column(name = "nombre_producto", nullable = false, length = 45)
+    @Column(name = "nombreproducto", nullable = false, length = 45)
     private String nombre;
 
     @Column(name = "precio", nullable = false)
@@ -28,19 +28,22 @@ public class Producto {
 
     @Column(name = "temporada", nullable = false, length = 45)
     private String temporada;
-
+    
+    @Column(name = "imagen", nullable = false, length = 150)
+    private String imagen;
     
     public Producto() {
     }//Constructor vacio
 
   
-    public Producto(String nombre, Double precio, String color, Integer stock, String descripcion, String temporada) {
+    public Producto(String nombre, Double precio, String color, Integer stock, String descripcion, String temporada, String imagen) {
         this.nombre = nombre;
         this.precio = precio;
         this.color = color;
         this.stock = stock;
         this.descripcion = descripcion;
         this.temporada = temporada;
+        this.imagen = imagen;
     }//constructor
 
    
@@ -99,8 +102,19 @@ public class Producto {
     public void setTemporada(String temporada) {
         this.temporada = temporada;
     }//get sett
+    
+    
+    public String getImagen() {
+		return imagen;
+	}
 
-    @Override
+
+	public void setImagen(String imagen) {
+		this.imagen = imagen;
+	}
+
+
+	@Override
     public String toString() {
         return "Producto{" +
                 "id=" + id +
@@ -110,6 +124,7 @@ public class Producto {
                 ", stock=" + stock +
                 ", descripcion='" + descripcion + '\'' +
                 ", temporada='" + temporada + '\'' +
+                ", imagen='" + imagen + '\'' +
                 '}';
     }//toString
 }//classProducto
