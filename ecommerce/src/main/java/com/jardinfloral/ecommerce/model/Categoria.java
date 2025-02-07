@@ -1,10 +1,16 @@
 package com.jardinfloral.ecommerce.model;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -14,21 +20,24 @@ public class Categoria {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "categoriasID", unique = true, nullable = false)
     private Integer id;
-
     @Column(name = "nombrecategoria", nullable = false, length = 45)
     private String nombre;
-    
-    @Column(name = "nombrecategoria", nullable = false, length = 300)
+    @Column(name = "descripcioncategoria", nullable = false, length = 300)
     private String descripcion;
-
+    
+    @ManyToMany(mappedBy = "categorias")
+    private Set<Producto> subscriptions;
+    
+    Set<Producto> productos = new HashSet<>();
+    
     public Categoria() {}//constructor vacio
 
 	public Categoria(String nombre, String descripcion) {
-		super();
 		this.nombre = nombre;
 		this.descripcion = descripcion;
 	}
 
+	//Getters y Setters
 	public String getNombre() {
 		return nombre;
 	}
@@ -48,7 +57,8 @@ public class Categoria {
 	public Integer getId() {
 		return id;
 	}
-
+	
+	//toString
 	@Override
 	public String toString() {
 		return "Categoria [id=" + id + ", nombre=" + nombre + ", descripcion=" + descripcion + "]";

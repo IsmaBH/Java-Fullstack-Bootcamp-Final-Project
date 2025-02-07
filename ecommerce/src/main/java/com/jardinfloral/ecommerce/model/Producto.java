@@ -1,6 +1,20 @@
 package com.jardinfloral.ecommerce.model;
 
-import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
+//No hay que traer todo el paque Persistance, hay cosas que no se usan de ese paquete, solo traer las
+//dependencias necesarias
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
+import javax.persistence.JoinColumn;
 
 @Entity
 @Table(name = "productos")
@@ -10,32 +24,29 @@ public class Producto {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "productosID", unique = true, nullable = false)
     private Long id;
-
     @Column(name = "nombreproducto", nullable = false, length = 45)
     private String nombre;
-
     @Column(name = "precio", nullable = false)
     private Double precio;
-
     @Column(name = "color", nullable = false, length = 45)
     private String color;
-
     @Column(name = "stock", nullable = false)
     private Integer stock;
-
     @Column(name = "descripcion", nullable = false, length = 300)
     private String descripcion;
-
     @Column(name = "temporada", nullable = false, length = 45)
-    private String temporada;
-    
+    private String temporada;    
     @Column(name = "imagen", nullable = false, length = 150)
     private String imagen;
     
-    public Producto() {
-    }//Constructor vacio
-
-  
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinTable(name = "categorias_has_productos", joinColumns =
+	{ @JoinColumn(referencedColumnName = "productosID")}
+    , inverseJoinColumns = {@JoinColumn(referencedColumnName = "categoriasID")})
+    private Set<Categoria> categorias;
+    
+    public Producto() {}//Constructor vacio
+    
     public Producto(String nombre, Double precio, String color, Integer stock, String descripcion, String temporada, String imagen) {
         this.nombre = nombre;
         this.precio = precio;
@@ -46,14 +57,12 @@ public class Producto {
         this.imagen = imagen;
     }//constructor
 
-   
+   //Getters y Setters
     public Long getId() {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+    //Se elimino el setId por que se decidio usar un valor autogenerado por facilidad
 
     public String getNombre() {
         return nombre;
@@ -113,7 +122,7 @@ public class Producto {
 		this.imagen = imagen;
 	}
 
-
+	//Metodo toString
 	@Override
     public String toString() {
         return "Producto{" +

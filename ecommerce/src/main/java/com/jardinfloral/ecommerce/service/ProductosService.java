@@ -33,7 +33,7 @@ public class ProductosService {
 
 
     public Producto addProduct(Producto producto) {
-        Optional<Producto> prod = productoRepository.findById(producto.getId());
+        Optional<Producto> prod = productoRepository.findByNombre(producto.getNombre());
         if (prod.isEmpty()) {
             return productoRepository.save(producto);
         } else {
@@ -42,10 +42,29 @@ public class ProductosService {
     }//add
 
     
-    public void deleteProduct(Long id) {
-        if (!productoRepository.existsById(id)) {
-            throw new EntityNotFoundException("El producto con el ID [" + id + "] no existe y no puede ser eliminado.");
-        }
-        productoRepository.deleteById(id);
+    public Producto deleteProduct(Long id) {
+    	Producto prod = null;
+		if(productoRepository.existsById(id)) {
+			prod = productoRepository.findById(id).get();
+			productoRepository.deleteById(id);
+		}
+		return prod;
+    }//delete
+    
+    public Producto updateProducto(Long id, String nombre, Double precio, String color, Integer stock, String descripcion, String temporada, String imagen) {
+    	Producto prod = null;
+    	if(productoRepository.existsById(id)) {
+    		Producto producto = productoRepository.findById(id).get();
+    		if(nombre != null) producto.setNombre(nombre);
+    		if(precio != null) producto.setPrecio(precio);
+    		if(color != null) producto.setColor(color);
+    		if(stock != null) producto.setStock(stock);
+			if(descripcion != null) producto.setDescripcion(descripcion);
+			if(temporada != null) producto.setTemporada(temporada);
+			if(imagen != null) producto.setImagen(imagen);
+			productoRepository.save(producto);
+			prod = producto;
+    	}
+    	return prod;
     }
-}//delete
+}

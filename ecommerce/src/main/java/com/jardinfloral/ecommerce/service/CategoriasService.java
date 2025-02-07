@@ -35,7 +35,7 @@ public class CategoriasService {
 
 
 	    public Categoria addCategoria(Categoria categoria) {
-	        Optional<Categoria> cat = categoriasRepository.findById(categoria.getId());
+	        Optional<Categoria> cat = categoriasRepository.findByNombre(categoria.getNombre());
 	        if (cat.isEmpty()) {
 	            return categoriasRepository.save(categoria);
 	        } else {
@@ -44,10 +44,24 @@ public class CategoriasService {
 	    }//add
 
 	    
-	    public void deleteCategoria(Integer id) {
-	        if (!categoriasRepository.existsById(id)) {
-	            throw new EntityNotFoundException("La categoría con el ID [" + id + "] no existe y no puede ser eliminado.");
-	        }
-	        categoriasRepository.deleteById(id);
+	    public Categoria deleteCategoria(Integer id) {
+	    	Categoria cat = null;
+			if(categoriasRepository.existsById(id)) {
+				cat = categoriasRepository.findById(id).get();
+				categoriasRepository.deleteById(id);
+			}
+			return cat;
 	    }//delete
+	    
+	    public Categoria updateCategoria(Integer id, String nombre, String descripcion){
+	    	Categoria cat = null;
+	    	if(categoriasRepository.existsById(id)) {
+				Categoria categoria = categoriasRepository.findById(id).get();
+				if(nombre != null) categoria.setNombre(nombre);
+				if(descripcion != null) categoria.setDescripcion(descripcion);
+				categoriasRepository.save(categoria);
+				cat = categoria;
+			}
+	    	return cat;
+	    }//update
 }
