@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.jardinfloral.ecommerce.dto.ChangePassword;
 import com.jardinfloral.ecommerce.model.Usuario;
 import com.jardinfloral.ecommerce.repository.UsuariosRepository;
 
@@ -46,6 +47,18 @@ public class UsuariosService {
 		
 	}//addUsuario
 
-
+	//5. Update
+		public Usuario updateUsuario(Integer id, ChangePassword changePassword) {
+			Usuario user = null;
+			if(usuariosRepository.existsById(id)) {
+				Usuario usuario = usuariosRepository.findById(id).get();
+				if(usuario.getPassword().equals(changePassword.getPassword())) {
+				   usuario.setPassword(changePassword.getNpassword());
+				   user=usuario;
+				   usuariosRepository.save(usuario);
+				}//Equals
+			}//exist
+			return user;
+		}//update
 }//class UsuariosService
 

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.jardinfloral.ecommerce.dto.ChangePassword;
 import com.jardinfloral.ecommerce.model.Usuario;
 import com.jardinfloral.ecommerce.service.UsuariosService;
 
@@ -42,12 +43,11 @@ public class UsuariosController {
 		return usuariosService.addUsuario(usuario);
 	}
 
-	/*
-	@PutMapping(path="{usuarioId}")
-	public Usuario updatePedido(@PathVariable("usuarioId") Integer id) {
-		return usuariosService.updateUsuario(id);
-	}
-	*/
+	@PutMapping(path="/{userId}")
+	public Usuario updateUsuario(@RequestBody ChangePassword changePassword,
+		@PathVariable("userId") Integer id){
+			return usuariosService.updateUsuario(id, changePassword);
+		}
 
 }//UsuariosController
 

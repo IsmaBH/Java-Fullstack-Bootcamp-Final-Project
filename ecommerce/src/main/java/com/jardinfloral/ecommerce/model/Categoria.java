@@ -18,7 +18,7 @@ public class Categoria {
     @Column(name = "nombrecategoria", nullable = false, length = 45)
     private String nombre;
     
-    @Column(name = "nombrecategoria", nullable = false, length = 300)
+    @Column(name = "descripcioncategoria", nullable = false, length = 300)
     private String descripcion;
 
     public Categoria() {}//constructor vacio

@@ -43,5 +43,6 @@ public class ProductosController {
         productosService.deleteProduct(id);  
         return "Producto eliminado.";
     }//delete
+    
 }//classProductosController
 

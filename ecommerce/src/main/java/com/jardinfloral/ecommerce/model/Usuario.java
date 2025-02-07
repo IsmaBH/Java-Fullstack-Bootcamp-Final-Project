@@ -25,20 +25,22 @@ public class Usuario {
 	private	Long telefono;
 	@Column(name="correo", unique=true, nullable=false)
 	private String correo;
-
+	@Column(name="password", unique=true, nullable=false)
+	private String password;
 	//Constructor vacío
 	public Usuario() {}
 
 	
 
 	//Constructor con parámetros
-	public Usuario(String nombre, String ape_p, String ape_m, Long telefono, String correo) {
+	public Usuario(String nombre, String ape_p, String ape_m, Long telefono, String correo, String password) {
 			
 		this.nombre = nombre;
 		this.ape_p = ape_p;
 		this.ape_m = ape_m;
 		this.telefono = telefono;
 		this.correo = correo;
+		this.password = password;
 	}
 
 	//Getters y Setters	
@@ -107,14 +109,23 @@ public class Usuario {
 	}
 
 
+	public String getPassword() {
+		return password;
+	}
+
+
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+
 
 	@Override
 	public String toString() {
 		return "Usuario [id=" + id + ", nombre=" + nombre + ", ape_p=" + ape_p + ", ape_m=" + ape_m + ", telefono="
-				+ telefono + ", correo=" + correo + "]";
+				+ telefono + ", correo=" + correo +", password=" + password +  "]";
 	}
-
-	//toString
 	
 
 
