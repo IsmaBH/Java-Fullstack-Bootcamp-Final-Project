@@ -52,6 +52,7 @@ public class ProductosController {
         return productosService.deleteProduct(id);
     }//delete
     
+
     @PutMapping(path="{prodId}")
     public Producto updateProducto(@PathVariable("prodId") Long id,
 			@RequestParam(required = false) String nombre,
@@ -63,5 +64,6 @@ public class ProductosController {
 			@RequestParam(required = false) String imagen) {
 		return productosService.updateProducto(id, nombre, precio, color, stock, descripcion, temporada, imagen);
 	}
+
 }//classProductosController
 
