@@ -1,7 +1,7 @@
 package com.jardinfloral.ecommerce.model;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 //No hay que traer todo el paque Persistance, hay cosas que no se usan de ese paquete, solo traer las
@@ -43,7 +43,7 @@ public class Producto {
     @JoinTable(name = "categorias_has_productos", joinColumns =
 	{ @JoinColumn(referencedColumnName = "productosID")}
     , inverseJoinColumns = {@JoinColumn(referencedColumnName = "categoriasID")})
-    private Set<Categoria> categorias;
+    List<Categoria> categorias = new ArrayList<Categoria>();
     
     public Producto() {}//Constructor vacio
     
@@ -120,6 +120,15 @@ public class Producto {
 
 	public void setImagen(String imagen) {
 		this.imagen = imagen;
+	}
+
+	
+	public List<Categoria> getCategorias() {
+		return categorias;
+	}
+
+	public void setCategorias(List<Categoria> categorias) {
+		this.categorias = categorias;
 	}
 
 	//Metodo toString
