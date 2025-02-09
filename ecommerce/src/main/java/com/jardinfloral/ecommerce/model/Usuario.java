@@ -13,7 +13,7 @@ import javax.persistence.Table;
 public class Usuario {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="usuario_id", unique=true, nullable=false)
+	@Column(name="usuarioID", unique=true, nullable=false)
 	private Integer id;
 	@Column(name="nombre", unique=true, nullable=false)
 	private String nombre;
@@ -25,8 +25,10 @@ public class Usuario {
 	private	Long telefono;
 	@Column(name="correo", unique=true, nullable=false)
 	private String correo;
-	@Column(name="password", unique=true, nullable=false)
+	@Column(name="contrasena", unique=true, nullable=false)
 	private String password;
+	@Column(name="rol", unique=true, nullable=false)
+	private String rol;
 	//Constructor vacío
 	public Usuario() {}
 
@@ -117,6 +119,18 @@ public class Usuario {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	
+
+	public String getRol() {
+		return rol;
+	}
+
+
+
+	public void setRol(String rol) {
+		this.rol = rol;
 	}
 
 

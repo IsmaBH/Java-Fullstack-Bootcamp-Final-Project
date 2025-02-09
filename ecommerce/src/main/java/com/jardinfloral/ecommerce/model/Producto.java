@@ -33,27 +33,24 @@ public class Producto {
     @Column(name = "stock", nullable = false)
     private Integer stock;
     @Column(name = "descripcion", nullable = false, length = 300)
-    private String descripcion;
-    @Column(name = "temporada", nullable = false, length = 45)
-    private String temporada;    
+    private String descripcion;   
     @Column(name = "imagen", nullable = false, length = 150)
     private String imagen;
     
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    @JoinTable(name = "categorias_has_productos", joinColumns =
+    @JoinTable(name = "productos_has_categorias", joinColumns =
 	{ @JoinColumn(referencedColumnName = "productosID")}
     , inverseJoinColumns = {@JoinColumn(referencedColumnName = "categoriasID")})
     List<Categoria> categorias = new ArrayList<Categoria>();
     
     public Producto() {}//Constructor vacio
     
-    public Producto(String nombre, Double precio, String color, Integer stock, String descripcion, String temporada, String imagen) {
+    public Producto(String nombre, Double precio, String color, Integer stock, String descripcion, String imagen) {
         this.nombre = nombre;
         this.precio = precio;
         this.color = color;
         this.stock = stock;
         this.descripcion = descripcion;
-        this.temporada = temporada;
         this.imagen = imagen;
     }//constructor
 
@@ -103,15 +100,6 @@ public class Producto {
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
-
-    public String getTemporada() {
-        return temporada;
-    }
-
-    public void setTemporada(String temporada) {
-        this.temporada = temporada;
-    }//get sett
-    
     
     public String getImagen() {
 		return imagen;
@@ -141,7 +129,6 @@ public class Producto {
                 ", color='" + color + '\'' +
                 ", stock=" + stock +
                 ", descripcion='" + descripcion + '\'' +
-                ", temporada='" + temporada + '\'' +
                 ", imagen='" + imagen + '\'' +
                 '}';
     }//toString

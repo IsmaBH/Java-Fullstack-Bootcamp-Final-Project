@@ -21,11 +21,11 @@ USE `jardin_floral_bd` ;
 -- Table `jardin_floral_bd`.`pedidos`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `jardin_floral_bd`.`pedidos` (
-  `transaccionID` INT NOT NULL AUTO_INCREMENT,
+  `pedidoID` INT NOT NULL AUTO_INCREMENT,
   `fechaventa` DATE NOT NULL,
   `cantidadpagada` DOUBLE NOT NULL,
   `cantidadvendida` INT NOT NULL,
-  PRIMARY KEY (`transaccionID`))
+  PRIMARY KEY (`pedidoID`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
@@ -35,15 +35,15 @@ COLLATE = utf8mb4_0900_ai_ci;
 -- Table `jardin_floral_bd`.`productos`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `jardin_floral_bd`.`productos` (
-  `productosID` BIGINT(12) NOT NULL,
+  `productosID` BIGINT(12) NOT NULL AUTO_INCREMENT,
   `nombreproducto` VARCHAR(45) NOT NULL,
   `precio` DOUBLE NOT NULL,
   `color` VARCHAR(45) NOT NULL,
   `stock` INT NOT NULL,
   `descripcion` VARCHAR(300) NOT NULL,
-  `temporada` VARCHAR(45) NOT NULL,
-  `urlimagen` VARCHAR(150) NOT NULL,
-  PRIMARY KEY (`productosID`))
+  `imagen` VARCHAR(150) NOT NULL,
+  PRIMARY KEY (`productosID`),
+  UNIQUE INDEX `productosID_UNIQUE` (`productosID` ASC) VISIBLE)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
@@ -53,13 +53,13 @@ COLLATE = utf8mb4_0900_ai_ci;
 -- Table `jardin_floral_bd`.`usuario`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `jardin_floral_bd`.`usuario` (
-  `usuarioID` INT NOT NULL,
+  `usuarioID` INT NOT NULL AUTO_INCREMENT,
   `nombre` VARCHAR(45) NOT NULL,
-  `apellidop` VARCHAR(45) NOT NULL,
-  `apellidom` VARCHAR(45) NULL DEFAULT NULL,
+  `apePaterno` VARCHAR(45) NOT NULL,
+  `apeMaterno` VARCHAR(45) NULL,
   `telefono` BIGINT NOT NULL,
   `correo` VARCHAR(55) NOT NULL,
-  `contraseña` VARCHAR(150) NOT NULL,
+  `contrasena` VARCHAR(150) NOT NULL,
   `rol` VARCHAR(10) NOT NULL,
   PRIMARY KEY (`usuarioID`),
   UNIQUE INDEX `UsuarioID_UNIQUE` (`usuarioID` ASC) VISIBLE)
@@ -72,11 +72,11 @@ COLLATE = utf8mb4_0900_ai_ci;
 -- Table `jardin_floral_bd`.`categorias`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `jardin_floral_bd`.`categorias` (
-  `idcategorias` INT NOT NULL,
-  `nombre` VARCHAR(45) NOT NULL,
-  `descripcion` VARCHAR(300) NOT NULL,
-  PRIMARY KEY (`idcategorias`),
-  UNIQUE INDEX `idcategorias_UNIQUE` (`idcategorias` ASC) VISIBLE)
+  `categoriasID` INT NOT NULL AUTO_INCREMENT,
+  `nombrecategoria` VARCHAR(45) NOT NULL,
+  `descripcioncategoria` VARCHAR(300) NOT NULL,
+  PRIMARY KEY (`categoriasID`),
+  UNIQUE INDEX `idcategorias_UNIQUE` (`categoriasID` ASC) VISIBLE)
 ENGINE = InnoDB;
 
 

@@ -52,7 +52,7 @@ public class ProductosService {
 		return prod;
     }//delete
     
-    public Producto updateProducto(Long id, String nombre, Double precio, String color, Integer stock, String descripcion, String temporada, String imagen) {
+    public Producto updateProducto(Long id, String nombre, Double precio, String color, Integer stock, String descripcion, String imagen) {
     	Producto prod = null;
     	if(productoRepository.existsById(id)) {
     		Producto producto = productoRepository.findById(id).get();
@@ -61,7 +61,6 @@ public class ProductosService {
     		if(color != null) producto.setColor(color);
     		if(stock != null) producto.setStock(stock);
 			if(descripcion != null) producto.setDescripcion(descripcion);
-			if(temporada != null) producto.setTemporada(temporada);
 			if(imagen != null) producto.setImagen(imagen);
 			productoRepository.save(producto);
 			prod = producto;

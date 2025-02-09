@@ -60,9 +60,8 @@ public class ProductosController {
 			@RequestParam(required = false) String color,
 			@RequestParam(required = false) Integer stock,
 			@RequestParam(required = false) String descripcion,
-			@RequestParam(required = false) String temporada,
 			@RequestParam(required = false) String imagen) {
-		return productosService.updateProducto(id, nombre, precio, color, stock, descripcion, temporada, imagen);
+		return productosService.updateProducto(id, nombre, precio, color, stock, descripcion, imagen);
 	}
 
 }//classProductosController

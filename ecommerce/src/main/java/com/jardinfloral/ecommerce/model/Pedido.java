@@ -12,13 +12,13 @@ import javax.persistence.Table;
 public class Pedido {
 	@Id
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
-	@Column(name="id", unique=true, nullable=false)
+	@Column(name="pedidoID", unique=true, nullable=false)
 	private Integer id;
-	@Column(name="fecha_venta",unique=false,nullable=false)
+	@Column(name="fechaventa",unique=false,nullable=false)
 	private String fechaVenta;
-	@Column(name="cantidad_pagada",unique=false,nullable=false)
+	@Column(name="cantidadpagada",unique=false,nullable=false)
 	private Double cantidadPagada;
-	@Column(name="cantidad_vendida",unique=false,nullable=false)
+	@Column(name="cantidadvendida",unique=false,nullable=false)
 	private Integer cantidadVendida;
 	
 	//Constructor vacio
