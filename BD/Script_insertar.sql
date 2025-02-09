@@ -16,13 +16,13 @@ INSERT INTO `usuario`(nombre, apePaterno, apeMaterno, telefono, correo, contrase
 INSERT INTO `usuario`(nombre, apePaterno, apeMaterno, telefono, correo, contrasena, rol) VALUES
 ('Sofía','Hernández','González',5512223242,'algo1@gmail.com','pwd5678','user');
 INSERT INTO `usuario`(nombre, apePaterno, apeMaterno, telefono, correo, contrasena, rol) VALUES
-('Santiago','García','Rodrígez',5512223242,'algo1@gmail.com','pwd5678','user');
+('Santiago','García','Rodrígez',5513233343,'algo2@gmail.com','pwd5678','user');
 INSERT INTO `usuario`(nombre, apePaterno, apeMaterno, telefono, correo, contrasena, rol) VALUES
-('Valentina','Martínez','Fernández',5512223242,'algo1@gmail.com','pwd5678','user');
+('Valentina','Martínez','Fernández',5514243444,'algo3@gmail.com','pwd5678','user');
 INSERT INTO `usuario`(nombre, apePaterno, apeMaterno, telefono, correo, contrasena, rol) VALUES
-('Mateo','López','Díaz',5512223242,'algo1@gmail.com','pwd5678','user');
+('Mateo','López','Díaz',5515253545,'algo4@gmail.com','pwd5678','user');
 INSERT INTO `usuario`(nombre, apePaterno, apeMaterno, telefono, correo, contrasena, rol) VALUES
-('Ximena','Rodrígez','García',5512223242,'algo1@gmail.com','pwd5678','user');
+('Ximena','Rodrígez','García',5516263646,'algo5@gmail.com','pwd5678','user');
 
 -- Inserts para la tabla de productos se agregan 10 productos
 INSERT INTO `productos`(nombreproducto, precio, color, stock, descripcion, imagen) VALUES
