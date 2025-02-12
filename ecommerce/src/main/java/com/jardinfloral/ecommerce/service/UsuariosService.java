@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.jardinfloral.ecommerce.dto.ChangePassword;
@@ -15,6 +16,7 @@ public class UsuariosService {
 	private final UsuariosRepository usuariosRepository;
 
 	@Autowired
+	private PasswordEncoder encoder;
 	public UsuariosService(UsuariosRepository usuariosRepository) {
 		this.usuariosRepository = usuariosRepository;
 	}
@@ -60,5 +62,18 @@ public class UsuariosService {
 			}//exist
 			return user;
 		}//update
+
+		public boolean validateUser(Usuario usuario) {
+			 Optional<Usuario> user = usuariosRepository.findByCorreo(usuario.getCorreo());
+			 if(user.isPresent()) {
+				Usuario tmpUser =user.get();
+				//tmpUser.getPassword().equals(usuario.getPassword())
+					if(encoder.matches(usuario.getPassword(), tmpUser.getPassword())){
+						return true;
+					}//if equals
+			 }//if is present
+				 return false;
+			
+		}//validacion de usuario 
 }//class UsuariosService
 
