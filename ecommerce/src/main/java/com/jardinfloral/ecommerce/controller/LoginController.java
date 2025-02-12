@@ -45,7 +45,7 @@ public class LoginController {
 			   .setExpiration(calendar.getTime())
 			   .signWith(SignatureAlgorithm.HS256,"" )
 			   .compact();
-	}// generate tokenprivate String genretateToken(String correo) {
+	}
 		
 	
 }//ClassLoginController
