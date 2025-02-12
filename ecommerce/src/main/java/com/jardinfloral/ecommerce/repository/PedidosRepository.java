@@ -7,5 +7,5 @@ import com.jardinfloral.ecommerce.model.Pedido;
 
 @Repository
 public interface PedidosRepository  extends JpaRepository<Pedido,Integer>{
-
+	
 }
