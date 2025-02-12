@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.jardinfloral.ecommerce.dto.ChangePassword;
@@ -12,6 +13,8 @@ import com.jardinfloral.ecommerce.repository.UsuariosRepository;
 
 @Service
 public class UsuariosService {
+	@Autowired
+	private PasswordEncoder encoder;
 	private final UsuariosRepository usuariosRepository;
 
 	@Autowired
@@ -40,6 +43,7 @@ public class UsuariosService {
 	public Usuario addUsuario(Usuario usuario) {
 		Optional<Usuario> user = usuariosRepository.findByCorreo(usuario.getCorreo());
 		if(user.isEmpty()) {
+			usuario.setPassword(encoder.encode(usuario.getPassword()) );
 			return usuariosRepository.save(usuario);
 		}else {
 			return null;
@@ -52,13 +56,26 @@ public class UsuariosService {
 			Usuario user = null;
 			if(usuariosRepository.existsById(id)) {
 				Usuario usuario = usuariosRepository.findById(id).get();
-				if(usuario.getPassword().equals(changePassword.getPassword())) {
-				   usuario.setPassword(changePassword.getNpassword());
+				//if(usuario.getPassword().equals(changePassword.getPassword())) {
+				if(encoder.matches(changePassword.getPassword(), usuario.getPassword())) {
+				   usuario.setPassword(encoder.encode(changePassword.getPassword()));
 				   user=usuario;
 				   usuariosRepository.save(usuario);
 				}//Equals
 			}//exist
 			return user;
 		}//update
+
+		public boolean validateUser(Usuario usuario) {
+             Optional<Usuario> user =usuariosRepository.findByCorreo(usuario.getCorreo());
+             if(user.isPresent()) {
+            	 Usuario tmpUser = user.get();
+            	 //tmpUser.getPassword().equals(usuario.getPassword())
+            	 if(encoder.matches(usuario.getPassword(),tmpUser.getPassword())) {
+            		 return true;
+            	 }//ifEquals
+             }//if isPresent
+			return false;
+		}//ValidateUser
 }//class UsuariosService
 
