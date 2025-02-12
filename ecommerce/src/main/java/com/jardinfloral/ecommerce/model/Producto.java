@@ -43,6 +43,9 @@ public class Producto {
     , inverseJoinColumns = {@JoinColumn(referencedColumnName = "categoriasID")})
     List<Categoria> categorias = new ArrayList<Categoria>();
     
+    @ManyToMany(mappedBy = "productos")
+    List<Pedido> productos = new ArrayList<Pedido>();
+    
     public Producto() {}//Constructor vacio
     
     public Producto(String nombre, Double precio, String color, Integer stock, String descripcion, String imagen) {
@@ -118,6 +121,10 @@ public class Producto {
 	public void setCategorias(List<Categoria> categorias) {
 		this.categorias = categorias;
 	}
+	
+	public void setProductos(List<Pedido> productos) {
+		this.productos = productos;
+	}
 
 	//Metodo toString
 	@Override
@@ -132,4 +139,6 @@ public class Producto {
                 ", imagen='" + imagen + '\'' +
                 '}';
     }//toString
+
+	
 }//classProducto

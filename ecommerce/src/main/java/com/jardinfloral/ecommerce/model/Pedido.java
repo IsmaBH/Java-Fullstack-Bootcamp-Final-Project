@@ -1,10 +1,17 @@
 package com.jardinfloral.ecommerce.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -20,6 +27,12 @@ public class Pedido {
 	private Double cantidadPagada;
 	@Column(name="cantidadvendida",unique=false,nullable=false)
 	private Integer cantidadVendida;
+	
+	@ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinTable(name = "pedidos_has_productos", joinColumns =
+	{ @JoinColumn(referencedColumnName = "pedidoID")}
+    , inverseJoinColumns = {@JoinColumn(referencedColumnName = "productosID")})
+    List<Producto> productos = new ArrayList<Producto>();
 	
 	//Constructor vacio
 	public Pedido() {}
@@ -58,6 +71,15 @@ public class Pedido {
 
 	public void setCantidadVendida(Integer cantidadVendida) {
 		this.cantidadVendida = cantidadVendida;
+	}
+	
+
+	public List<Producto> getProductos() {
+		return productos;
+	}
+
+	public void setProductos(List<Producto> productos) {
+		this.productos = productos;
 	}
 
 	//toString
