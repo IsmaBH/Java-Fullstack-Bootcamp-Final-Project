@@ -43,7 +43,7 @@ public class LoginController {
 	   return Jwts.builder().setSubject(correo).claim("role","user")
 			   .setIssuedAt(new Date())
 			   .setExpiration(calendar.getTime())
-			   .signWith(SignatureAlgorithm.HS256,"" )
+			   .signWith(SignatureAlgorithm.HS256,JwtFilter.secret)
 			   .compact();
 	}
 		
