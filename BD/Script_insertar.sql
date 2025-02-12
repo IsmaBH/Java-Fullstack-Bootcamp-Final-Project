@@ -1,27 +1,27 @@
 USE `jardin_floral_bd`;
 
 -- Inserts para la tabla de usuarios, se agregan 6 Admins y 5 user
-INSERT INTO `usuario`(nombre, apePaterno, apeMaterno, telefono, correo, contrasena, rol) VALUES
+INSERT INTO `usuarios`(nombre, apepaterno, apematerno, telefono, correo, contrasena, rol) VALUES
 ('Wendy', 'Meneses', 'Hernández', 5536985214, 'wendy1@gmail.com','pwd1234','Admin');
-INSERT INTO `usuario`(nombre, apePaterno, apeMaterno, telefono, correo, contrasena, rol) VALUES
+INSERT INTO `usuarios`(nombre, apepaterno, apematerno, telefono, correo, contrasena, rol) VALUES
 ('Katherine', 'Reyes', 'Alonso', 5647876459, 'kather@gmail.com','pwd1234','Admin');
-INSERT INTO `usuario`(nombre, apePaterno, apeMaterno, telefono, correo, contrasena, rol) VALUES
+INSERT INTO `usuarios`(nombre, apepaterno, apematerno, telefono, correo, contrasena, rol) VALUES
 ('Jackeline', 'Montalvo', 'González', 9931882556, 'jmg.1995@gmail.com','pwd1234','Admin');
-INSERT INTO `usuario`(nombre, apePaterno, apeMaterno, telefono, correo, contrasena, rol) VALUES
+INSERT INTO `usuarios`(nombre, apepaterno, apematerno, telefono, correo, contrasena, rol) VALUES
 ('Marco', 'Medina', 'Díaz', 5627344990, 'marcomedina@gmail.com','pwd1234','Admin');
-INSERT INTO `usuario`(nombre, apePaterno, apeMaterno, telefono, correo, contrasena, rol) VALUES
+INSERT INTO `usuarios`(nombre, apepaterno, apematerno, telefono, correo, contrasena, rol) VALUES
 ('Diego','Baron','Hernandez',5574986532,'diego@gmail.com','pwd1234','Admin');
-INSERT INTO `usuario`(nombre, apePaterno, apeMaterno, telefono, correo, contrasena, rol) VALUES
+INSERT INTO `usuarios`(nombre, apepaterno, apematerno, telefono, correo, contrasena, rol) VALUES
 ('Angel','Lira','Gonzalez',5528987868,'angellira@gmail.com','pwd1234','Admin');
-INSERT INTO `usuario`(nombre, apePaterno, apeMaterno, telefono, correo, contrasena, rol) VALUES
+INSERT INTO `usuarios`(nombre, apepaterno, apematerno, telefono, correo, contrasena, rol) VALUES
 ('Sofía','Hernández','González',5512223242,'algo1@gmail.com','pwd5678','user');
-INSERT INTO `usuario`(nombre, apePaterno, apeMaterno, telefono, correo, contrasena, rol) VALUES
+INSERT INTO `usuarios`(nombre, apepaterno, apematerno, telefono, correo, contrasena, rol) VALUES
 ('Santiago','García','Rodrígez',5513233343,'algo2@gmail.com','pwd5678','user');
-INSERT INTO `usuario`(nombre, apePaterno, apeMaterno, telefono, correo, contrasena, rol) VALUES
+INSERT INTO `usuarios`(nombre, apepaterno, apematerno, telefono, correo, contrasena, rol) VALUES
 ('Valentina','Martínez','Fernández',5514243444,'algo3@gmail.com','pwd5678','user');
-INSERT INTO `usuario`(nombre, apePaterno, apeMaterno, telefono, correo, contrasena, rol) VALUES
+INSERT INTO `usuarios`(nombre, apepaterno, apematerno, telefono, correo, contrasena, rol) VALUES
 ('Mateo','López','Díaz',5515253545,'algo4@gmail.com','pwd5678','user');
-INSERT INTO `usuario`(nombre, apePaterno, apeMaterno, telefono, correo, contrasena, rol) VALUES
+INSERT INTO `usuarios`(nombre, apepaterno, apematerno, telefono, correo, contrasena, rol) VALUES
 ('Ximena','Rodrígez','García',5516263646,'algo5@gmail.com','pwd5678','user');
 
 -- Inserts para la tabla de productos se agregan 10 productos

@@ -17,9 +17,9 @@ public class Usuario {
 	private Integer id;
 	@Column(name="nombre", unique=true, nullable=false)
 	private String nombre;
-	@Column(name="apePaterno", unique=true, nullable=false)
+	@Column(name="apepaterno", unique=false, nullable=false)
 	private String ape_p;
-	@Column(name="apeMaterno", unique=true, nullable=false)
+	@Column(name="apematerno", unique=false, nullable=false)
 	private String ape_m;
 	@Column(name="telefono", unique=true, nullable=false)
 	private	Long telefono;

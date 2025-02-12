@@ -52,11 +52,11 @@ COLLATE = utf8mb4_0900_ai_ci;
 -- -----------------------------------------------------
 -- Table `jardin_floral_bd`.`usuario`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `jardin_floral_bd`.`usuario` (
+CREATE TABLE IF NOT EXISTS `jardin_floral_bd`.`usuarios` (
   `usuarioID` INT NOT NULL AUTO_INCREMENT,
   `nombre` VARCHAR(45) NOT NULL,
-  `apePaterno` VARCHAR(45) NOT NULL,
-  `apeMaterno` VARCHAR(45) NULL,
+  `apepaterno` VARCHAR(45) NOT NULL,
+  `apematerno` VARCHAR(45) NULL,
   `telefono` BIGINT NOT NULL,
   `correo` VARCHAR(55) NOT NULL,
   `contrasena` VARCHAR(150) NOT NULL,
