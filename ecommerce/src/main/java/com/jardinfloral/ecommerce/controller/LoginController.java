@@ -39,7 +39,7 @@ public class LoginController {
 	
 	private String generateToken(String correo) {
 	   Calendar calendar = Calendar.getInstance();
-	   calendar.add(Calendar.MINUTE, 3);
+	   calendar.add(Calendar.HOUR, 12);
 	   return Jwts.builder().setSubject(correo).claim("role","user")
 			   .setIssuedAt(new Date())
 			   .setExpiration(calendar.getTime())
