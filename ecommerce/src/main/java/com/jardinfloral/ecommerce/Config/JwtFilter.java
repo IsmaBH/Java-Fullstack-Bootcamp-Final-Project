@@ -31,6 +31,7 @@ public void doFilter(ServletRequest request, ServletResponse response, FilterCha
 			(! httpServletRequest.getRequestURI().contains("/api/productos/")))
 			|| ("PUT".equals(httpServletRequest.getMethod()))
 			|| ("DELETE".equals(httpServletRequest.getMethod()))
+			
 			) {
 	
 	if(authHeader==null || authHeader.startsWith("bearer: ")) {
