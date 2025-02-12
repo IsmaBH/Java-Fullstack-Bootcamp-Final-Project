@@ -43,6 +43,7 @@ public class Producto {
     , inverseJoinColumns = {@JoinColumn(referencedColumnName = "categoriasID")})
     List<Categoria> categorias = new ArrayList<Categoria>();
     
+    
     @ManyToMany(mappedBy = "productos")
     List<Pedido> productos = new ArrayList<Pedido>();
     

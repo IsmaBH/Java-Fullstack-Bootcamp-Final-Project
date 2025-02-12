@@ -1,11 +1,17 @@
 package com.jardinfloral.ecommerce.model;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -29,10 +35,13 @@ public class Usuario {
 	private String password;
 	@Column(name="rol", unique=true, nullable=false)
 	private String rol;
+	
+	@OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name="usuarioid", referencedColumnName = "usuarioid") // Conservamos JoinColumn
+    private List<Pedido> pedidos = new ArrayList<>();
+	
 	//Constructor vacío
 	public Usuario() {}
-
-	
 
 	//Constructor con parámetros
 	public Usuario(String nombre, String ape_p, String ape_m, Long telefono, String correo, String password) {
@@ -132,8 +141,16 @@ public class Usuario {
 	public void setRol(String rol) {
 		this.rol = rol;
 	}
+	
 
 
+	public List<Pedido> getPedidos() {
+		return pedidos;
+	}
+
+	public void setPedidos(List<Pedido> pedidos) {
+		this.pedidos = pedidos;
+	}
 
 	@Override
 	public String toString() {
