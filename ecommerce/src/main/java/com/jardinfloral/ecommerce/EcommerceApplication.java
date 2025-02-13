@@ -21,7 +21,7 @@ public class EcommerceApplication {
 				new FilterRegistrationBean<JwtFilter>();
 		registrationBean.setFilter(new JwtFilter());
 		registrationBean.addUrlPatterns("/api/productos/");
-		registrationBean.addUrlPatterns("/api/usuario/");
+		registrationBean.addUrlPatterns("/api/usuarios/");
 		return registrationBean;
 	}//jwtFilter
 
