@@ -25,7 +25,7 @@ public void doFilter(ServletRequest request, ServletResponse response, FilterCha
 	HttpServletRequest httpServletRequest = (HttpServletRequest) request;
 	String authHeader = httpServletRequest.getHeader("Authorization");
 	if(("POST".equals(httpServletRequest.getMethod()) &&
-			(! httpServletRequest.getRequestURI().contains("/api/usuario/")))
+			( httpServletRequest.getRequestURI().contains("/api/usuarios/")))
 			||
 			("GET".equals(httpServletRequest.getMethod()) &&
 			(! httpServletRequest.getRequestURI().contains("/api/productos/")))
