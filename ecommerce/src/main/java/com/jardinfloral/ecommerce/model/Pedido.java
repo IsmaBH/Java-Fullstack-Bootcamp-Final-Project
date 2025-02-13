@@ -12,7 +12,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -28,14 +27,16 @@ public class Pedido {
 	private Double cantidadPagada;
 	@Column(name="cantidadvendida",unique=false,nullable=false)
 	private Integer cantidadVendida;
-	@ManyToOne
-    @JoinColumn(name = "usuarioid", nullable = false) 
-    private Usuario usuario;
+	@Column (nullable= false)
+	private Integer usuarioId;
+
+
+
 	
 	@ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinTable(name = "pedidos_has_productos", joinColumns =
 	{ @JoinColumn(referencedColumnName = "pedidoID")}
-    , inverseJoinColumns = {@JoinColumn(referencedColumnName = "productosID")})
+    , inverseJoinColumns = {@JoinColumn(referencedColumnName = "productosid")})
     List<Producto> productos = new ArrayList<Producto>();
 	
 	
@@ -87,13 +88,12 @@ public class Pedido {
 		this.productos = productos;
 	}
 	
-
-	public Usuario getUsuario() {
-		return usuario;
+	public Integer getUsuarioId() {
+		return usuarioId;
 	}
 
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
+	public void setUsuarioId(Integer usuarioId) {
+		this.usuarioId = usuarioId;
 	}
 
 	//toString
