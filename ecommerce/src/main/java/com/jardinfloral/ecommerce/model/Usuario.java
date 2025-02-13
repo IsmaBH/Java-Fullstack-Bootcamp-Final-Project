@@ -21,7 +21,7 @@ public class Usuario {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="usuarioID", unique=true, nullable=false)
 	private Integer id;
-	@Column(name="nombre", unique=true, nullable=false)
+	@Column(name="nombre", nullable=false)
 	private String nombre;
 	@Column(name="apepaterno", unique=false, nullable=false)
 	private String ape_p;
@@ -31,14 +31,17 @@ public class Usuario {
 	private	Long telefono;
 	@Column(name="correo", unique=true, nullable=false)
 	private String correo;
-	@Column(name="contrasena", unique=true, nullable=false)
+	@Column(name="contrasena", nullable=false)
 	private String password;
-	@Column(name="rol", unique=true, nullable=false)
+	@Column(name="rol", nullable=false)
 	private String rol;
 	
-	@OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name="usuarioid", referencedColumnName = "usuarioid") // Conservamos JoinColumn
-    private List<Pedido> pedidos = new ArrayList<>();
+	@OneToMany(cascade= CascadeType.ALL)
+	@JoinColumn(name="usuarioId", referencedColumnName = "usuarioID")
+	private List<Pedido> pedidos = new ArrayList<Pedido>();
+
+	
+
 	
 	//Constructor vacío
 	public Usuario() {}
@@ -141,7 +144,7 @@ public class Usuario {
 	public void setRol(String rol) {
 		this.rol = rol;
 	}
-	
+
 
 
 	public List<Pedido> getPedidos() {

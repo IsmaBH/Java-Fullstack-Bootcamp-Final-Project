@@ -127,6 +127,10 @@ public class Producto {
 		this.productos = productos;
 	}
 
+	public List<Pedido> getProductos() {
+		return productos;
+	}
+
 	//Metodo toString
 	@Override
     public String toString() {
