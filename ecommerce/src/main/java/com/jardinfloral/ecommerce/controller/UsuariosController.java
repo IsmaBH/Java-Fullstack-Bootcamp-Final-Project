@@ -17,7 +17,6 @@ import com.jardinfloral.ecommerce.dto.ChangePassword;
 import com.jardinfloral.ecommerce.model.Usuario;
 import com.jardinfloral.ecommerce.service.UsuariosService;
 
-@CrossOrigin(origins = "http://127.0.0.1:5501/")
 @RestController
 @RequestMapping(path="/api/usuarios/")
 public class UsuariosController {
